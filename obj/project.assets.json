@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Password Generator\\Password Generator.csproj",
+      "projectUniqueName": "D:\\Documents\\Password Manager\\Password Generator.csproj",
       "projectName": "Password Generator",
-      "projectPath": "D:\\Documents\\Password Generator\\Password Generator.csproj",
+      "projectPath": "D:\\Documents\\Password Manager\\Password Generator.csproj",
       "packagesPath": "C:\\Users\\matve\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Password Generator\\obj\\",
+      "outputPath": "D:\\Documents\\Password Manager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\matve\\AppData\\Roaming\\NuGet\\NuGet.Config"
