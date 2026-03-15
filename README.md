@@ -1,2 +1,2 @@
 # Password Generator
-a simple password generator in C#
+A simple password generator in C#
