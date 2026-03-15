@@ -1,0 +1,2 @@
+D:\Documents\Password Manager\build\PasswordManager.pdb
+D:\Documents\Password Manager\build\PasswordManager.exe
