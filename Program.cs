@@ -22,7 +22,7 @@
             GeneratePasswordOption();
             break;
         case 2:
-            ShowSavedPasswordsOption();
+            ShowSavedPasswordsOptionWithSearch();
             break;
         case 3:
             Console.WriteLine("Goodbye! Press any key to exit...");
@@ -38,7 +38,7 @@
 
 void GeneratePasswordOption()
 {
-    string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
 
     Console.WriteLine("Enter password length:");
     string? input = Console.ReadLine();
@@ -86,17 +86,42 @@ void GeneratePasswordOption()
     Console.ReadKey();
 }
 
-void ShowSavedPasswordsOption()
+void ShowSavedPasswordsOptionWithSearch()
 {
-    Console.WriteLine("Saved passwords:");
-    if (File.Exists("passwords.txt"))
+    // Search functionality
+    Console.WriteLine("Do you want to search for a specific password? (y/n)");
+    string? searchOption = Console.ReadLine();
+    if ((searchOption ?? string.Empty).Equals("y", StringComparison.CurrentCultureIgnoreCase))
     {
-        string passwords = File.ReadAllText("passwords.txt");
-        Console.WriteLine(passwords);
+        Console.WriteLine("Enter the site name to search for:");
+        string searchTerm = Console.ReadLine() ?? string.Empty;
+
+        if (!File.Exists("passwords.txt"))
+        {
+            Console.WriteLine("No saved passwords found.");
+            Console.WriteLine("Press any key to return to the main menu...");
+            Console.ReadKey();
+            return;
+        }
+
+        string[] savedPasswords = File.ReadAllLines("passwords.txt");
+        var matchingPasswords = savedPasswords.Where(p => p.StartsWith(searchTerm + ":")).ToArray();
+
+        if (matchingPasswords.Length == 0)
+        {
+            Console.WriteLine("No passwords found for the specified site.");
+        }
+        else
+        {
+            Console.WriteLine("Matching Passwords:");
+            foreach (string password in matchingPasswords)
+            {
+                Console.WriteLine(password);
+            }
+        }
+
+        Console.WriteLine("Press any key to return to the main menu...");
+        Console.ReadKey();
+        return;
     }
-    else    {
-    Console.WriteLine("No saved passwords found.");
-    }
-    Console.WriteLine("Press any key to return to the main menu...");
-    Console.ReadKey();
 }
